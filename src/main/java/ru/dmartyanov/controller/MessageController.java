@@ -1,8 +1,10 @@
 package ru.dmartyanov.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.dmartyanov.exceptions.NotFoundException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,5 +32,15 @@ public class MessageController {
     @GetMapping
     public List<Map<String, String>> list() {
         return messages;
+    }
+
+    @GetMapping("{id}")
+    public Map<String, String> getOne(
+            @PathVariable String id
+    ) {
+        return messages.stream()
+                .filter(x->x.get("id").equals(id))
+                .findFirst()
+                .orElseThrow(NotFoundException::new);
     }
 }
