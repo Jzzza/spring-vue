@@ -8,8 +8,18 @@ Vue.component('message-form',{
   },
   template:'<div>' +
               '<input type="text" placeholder="Write something" v-model="text" />' +
-              '<input type="button" value="Save" />' +
+              '<input type="button" value="Save" @click="save" />' +
             '</div>'
+  methods:{
+    click: function(){
+      var message = { text: this.text };
+      messageApi.save({}, message).then(result=>
+        result.json().then(data=>{
+
+        })
+      )
+    }
+  }
 });
 
 Vue.component('message-row',{
