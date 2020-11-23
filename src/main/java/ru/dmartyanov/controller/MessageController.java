@@ -1,7 +1,9 @@
 package ru.dmartyanov.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.dmartyanov.exceptions.NotFoundException;
+import ru.dmartyanov.repo.MessageRepo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,21 +13,12 @@ import java.util.Map;
 @RestController
 @RequestMapping("message")
 public class MessageController {
-    private int counter = 4;
-    private List<Map<String, String>> messages = new ArrayList<Map<String, String>>() {{
-        add(new HashMap<String, String>() {{
-            put("id", "1");
-            put("text", "First message");
-        }});
-        add(new HashMap<String, String>() {{
-            put("id", "2");
-            put("text", "Second message");
-        }});
-        add(new HashMap<String, String>() {{
-            put("id", "3");
-            put("text", "Third message");
-        }});
-    }};
+    private final MessageRepo messageRepo;
+
+    @Autowired
+    public MessageController(MessageRepo messageRepo) {
+        this.messageRepo = messageRepo;
+    }
 
     @GetMapping
     public List<Map<String, String>> list() {
