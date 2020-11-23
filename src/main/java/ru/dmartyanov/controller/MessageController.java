@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.dmartyanov.domain.Message;
 import ru.dmartyanov.repo.MessageRepo;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -32,6 +33,7 @@ public class MessageController {
 
     @PostMapping
     public Message create(@RequestBody Message message) {
+        message.setCreationDate(LocalDateTime.now());
         return messageRepo.save(message);
     }
 
