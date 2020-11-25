@@ -32,6 +32,7 @@ dependencies {
     compileOnly  ('org.projectlombok:lombok:1.18.8')
     annotationProcessor   ('org.projectlombok:lombok:1.18.8')
     compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.0.0.RELEASE')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
