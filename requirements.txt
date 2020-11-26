@@ -1,2 +1,2 @@
 yarn add vue vue-resource
-yarn add -D webpack webpack-cli webpack-dev-server babel-loader @babel/core @babel/preset-env vue-loader vue-template-loader
+yarn add -D webpack@4.17.1 webpack-cli@3.1.0 webpack-dev-server@3.1.7 babel-loader @babel/core @babel/preset-env vue-loader vue-template-loader
