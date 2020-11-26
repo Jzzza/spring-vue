@@ -10,17 +10,17 @@
 
 <script>
   import MessagesList from 'components/messages/MessageList.vue'
-  export default{
-    component: {
-      MessagesList
-    },
-    data(){
-      return {
-        messages: frontendData.messages,
-        profile: frontendData.profile
+    export default {
+      components: {
+        MessagesList
+      },
+      data() {
+        return {
+            messages: frontendData.messages,
+            profile: frontendData.profile
+        }
       }
     }
-  }
 </script>
 
 <style>
