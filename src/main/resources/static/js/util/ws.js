@@ -1,4 +1,4 @@
-import SockKS from 'sockjs-client'
+import SockJS from 'sockjs-client'
 import { Stomp } from '@stomp/stompjs'
 
 var stompClient = null
