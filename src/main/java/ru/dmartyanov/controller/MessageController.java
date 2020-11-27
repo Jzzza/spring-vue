@@ -2,6 +2,8 @@ package ru.dmartyanov.controller;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 import ru.dmartyanov.domain.Message;
 import ru.dmartyanov.repo.MessageRepo;
@@ -52,5 +54,11 @@ public class MessageController {
             @PathVariable("id") Message message
     ) {
         messageRepo.delete(message);
+    }
+
+    @MessageMapping("/changeMessage")
+    @SendTo("/topic/activity")
+    public Message change(Message message) {
+        return messageRepo.save(message);
     }
 }
