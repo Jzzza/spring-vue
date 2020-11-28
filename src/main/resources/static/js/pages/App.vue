@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-app">
     <div v-if="!profile">Необходимо авторизовать через <a href="/login">Google</a></div>
       <div v-else>
         <div>{{profile.name}}&nbsp;<a href="/logout">Выйти</a></div>
