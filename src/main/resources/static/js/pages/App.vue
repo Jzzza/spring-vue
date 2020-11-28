@@ -9,10 +9,12 @@
       </v-btn>
     </v-toolbar>
     <v-content>
-      <div v-if="!profile">Необходимо авторизовать через <a href="/login">Google</a></div>
-      <div>
+      <v-container v-if="!profile">
+        Необходимо авторизовать через <a href="/login">Google</a>
+      </v-container>
+      <v-container v-if="profile">
         <messages-list :messages="messages" />
-      </div>
+      </v-container>
     </v-content>
   </v-app>
 </template>
