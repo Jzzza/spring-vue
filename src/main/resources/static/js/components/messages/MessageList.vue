@@ -37,7 +37,7 @@
         deleteMessage(message){
           messagesApi.remove(message.id).then(result=>{
             if(result.ok){
-              this.messages.splice(this.messages.indexOf(this.message), 1)
+              this.messages.splice(this.messages.indexOf(message), 1)
             }
           })
         }
