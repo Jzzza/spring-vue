@@ -9,9 +9,6 @@
       </v-btn>
     </v-toolbar>
     <v-content>
-      <v-container v-if="!profile">
-        Необходимо авторизовать через <a href="/login">Google</a>
-      </v-container>
       <router-view></router-view>
     </v-content>
   </v-app>
@@ -22,9 +19,6 @@
   import { addHandler } from 'util/ws'
 
   export default {
-    components: {
-      MessagesList
-    },
     computed: mapState(['profile']),
     methods: mapMutations(['addMessageMutation','updateMessageMutation','removeMessageMutation']),
     created(){
