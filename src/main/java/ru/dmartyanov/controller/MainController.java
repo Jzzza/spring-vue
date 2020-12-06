@@ -1,5 +1,6 @@
 package ru.dmartyanov.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +33,14 @@ public class MainController {
     @GetMapping
     public String main(
             Model model,
-            @AuthenticationPrincipal User user) {
+            @AuthenticationPrincipal User user
+    ) throws JsonProcessingException {
         HashMap<Object, Object> data = new HashMap<>();
 
         if (user != null) {
             data.put("profile", user);
-            data.put("messages", messageRepo.findAll());
+            String messages = writer.writeValueAsString(messageRepo.findAll());
+            model.addAttribute("messages", messages);
         }
 
         model.addAttribute("frontendData", data);
