@@ -25,26 +25,32 @@ public class MainController {
     private String profile;
 
     @Autowired
-    public MainController(MessageRepo messageRepo, ObjectMapper mapper) {
+    public MainController(MessageRepo messageRepo,
+                          ObjectMapper mapper) {
         this.messageRepo = messageRepo;
-        this.writer = mapper.setConfig(mapper.getSerializationConfig()).writerWithView(Views.FullMessage.class);
+        this.writer = mapper.setConfig(mapper.getSerializationConfig())
+                            .writerWithView(Views.FullMessage.class);
     }
 
     @GetMapping
     public String main(
             Model model,
             @AuthenticationPrincipal User user
-    ) throws JsonProcessingException {
+                      ) throws JsonProcessingException {
         HashMap<Object, Object> data = new HashMap<>();
 
         if (user != null) {
-            data.put("profile", user);
+            data.put("profile",
+                     user);
             String messages = writer.writeValueAsString(messageRepo.findAll());
-            model.addAttribute("messages", messages);
+            model.addAttribute("messages",
+                               messages);
         }
 
-        model.addAttribute("frontendData", data);
-        model.addAttribute("isDevMode", "dev".equals(profile));
+        model.addAttribute("frontendData",
+                           data);
+        model.addAttribute("isDevMode",
+                           "dev".equals(profile));
 
         return "index";
     }
