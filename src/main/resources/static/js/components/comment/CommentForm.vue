@@ -4,8 +4,7 @@
       label="Add comment"
       placeholder="Write something"
       v-model="text"
-      @keyup.enter="save"
-    />
+      @keyup.enter="save"/>
     <v-btn @click="save">
       Add
     </v-btn>
